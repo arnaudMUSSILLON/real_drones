@@ -3,20 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app;
+package map;
 
 /**
  *
  * @author arnaudmussillon
  */
-public class App {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        Controller controller = new Controller();
-    }
+public class Stores extends Adresses {
     
+    public Stores(){
+        super("stores.csv");
+    }
 }

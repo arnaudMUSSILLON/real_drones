@@ -5,10 +5,29 @@
  */
 package app;
 
+import map.*;
+
 /**
  *
  * @author arnaudmussillon
  */
 public class Controller {
     
+    /**
+     * Constructor
+     */
+    public Controller(){
+        
+        //init depots, stores and customers addresses
+        Depots depots = new Depots();
+        Stores stores = new Stores();
+        Customers customers = new Customers();
+        
+        //load the adresses
+        depots.loadData();
+        stores.loadData();
+        customers.loadData();
+        
+        System.out.println(depots.getAddresses());
+    }
 }

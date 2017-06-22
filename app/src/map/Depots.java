@@ -9,6 +9,10 @@ package map;
  *
  * @author arnaudmussillon
  */
-public class LoadingMap {
-    
+public class Depots extends Adresses{
+
+    public Depots(){
+        super("depots.csv");
+    }
+ 
 }
