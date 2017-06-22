@@ -20,6 +20,10 @@ public class Address {
         this.posY = _y;
     }
     
+    public String getLabel(){
+        return this.label;
+    }
+    
     public double getPosX(){
         return this.posX;
     }
