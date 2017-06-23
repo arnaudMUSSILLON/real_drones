@@ -11,24 +11,24 @@ package map;
  */
 public class Address {
     private final String label;
-    private final double posX;
-    private final double posY;
+    private final double lat;
+    private final double lon;
     
-    public Address(String _label, double _x, double _y){
+    public Address(String _label, double _lat, double _lon){
         this.label = _label;
-        this.posX = _x;
-        this.posY = _y;
+        this.lat = _lat;
+        this.lon = _lon;
     }
     
     public String getLabel(){
         return this.label;
     }
     
-    public double getPosX(){
-        return this.posX;
+    public double getLong(){
+        return this.lon;
     }
     
-    public double getPosY(){
-        return this.posY;
+    public double getLat(){
+        return this.lat;
     }
 }
