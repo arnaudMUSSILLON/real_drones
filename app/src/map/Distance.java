@@ -12,11 +12,15 @@ package map;
 public class Distance {
     private double km;
     
+    /**
+     * Constructor
+     * @param _km distance in km
+     */
     public Distance(double _km){
         this.km = _km;
     }
     
     public double getDistance(){
         return this.km;
-    }
+    }  
 }

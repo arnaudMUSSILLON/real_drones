@@ -179,8 +179,12 @@ public class View extends javax.swing.JFrame {
      * display results in the appropriate textfields
      * @param store string containing the address of the store
      * @param depot string containing the address of the depot
+     * @param distStore distance to reach the closest store
+     * @param distDepot distance to reach the closest depot
+     * @param timeStore time to reach the closest store
+     * @param timeDepot time to reach the closest depot
      */
-    public void displayResult(String store, String depot, double distStore, double distDepot){
+    public void displayResult(String store, String depot, double distStore, double distDepot, double timeStore, double timeDepot){
         this.result_store_textField.setText(" Store :    "+store);
         this.result_depot_textField.setText(" Depot :    "+depot);
         
@@ -189,6 +193,28 @@ public class View extends javax.swing.JFrame {
         distDepot = (double) Math.round(distDepot*100)/100;
         this.distance_store_textField.setText(Double.toString(distStore)+" km");
         this.distance_depot_textField.setText(Double.toString(distDepot)+" km");
+        
+        String tStore = this.sectoMin(timeStore);
+        String tDepot = this.sectoMin(timeDepot);
+        this.result_textField2.setText("Store : "+tStore+" --> Depot : "+ tDepot);
+    }
+    
+    
+        /**
+     * Transform a time in sec to min+sec
+     * @param time in seconds
+     * @return string min+sec
+     */
+    public String sectoMin(double time){
+        String res;
+        
+        int mins = (int) (time / 60);
+        int remainder = (int) (time % 60);
+        int secs = remainder;
+
+        res = mins+" min, "+secs+" sec";
+        
+        return res;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

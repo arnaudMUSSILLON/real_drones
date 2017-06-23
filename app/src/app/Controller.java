@@ -7,6 +7,7 @@ package app;
 
 import java.util.ArrayList;
 import map.*;
+import time.Timer;
 
 /**
  *
@@ -20,12 +21,14 @@ public class Controller {
     private View view;
     private Distance distanceStore;
     private Distance distanceDepot;
+    private int speed; //in km/h
     
     /**
      * Constructor
      */
     public Controller(View _view){
         this.operations = new Operations();
+        this.speed = 60;
         
         //init depots, stores and customers addresses
         this.depots = new Depots();
@@ -52,13 +55,21 @@ public class Controller {
         //search for the closest store
         Address closestStore;
         closestStore = this.searchClosest(customerAddress, this.stores.getAddresses(), "stores");
+        Timer timeStore = new Timer();
         
         //search for the closer depot
         Address closestDepot;
         closestDepot = this.searchClosest(closestStore, this.depots.getAddresses(), "depots");
+        Timer timeDepot = new Timer();
+        
+        //calculate the time
+        double toReachStore = timeStore.calculateTime(this.distanceStore.getDistance(), this.speed);
+        double toReachDepot = timeDepot.calculateTime(this.distanceDepot.getDistance(), this.speed);
         
         //update the result in the view
-        this.view.displayResult(closestStore.getLabel(), closestDepot.getLabel(), this.distanceStore.getDistance(), this.distanceDepot.getDistance());
+        this.view.displayResult(closestStore.getLabel(), closestDepot.getLabel(), 
+                this.distanceStore.getDistance(), this.distanceDepot.getDistance(),
+                toReachStore, toReachDepot);
         //System.out.println(customerAddress.getLabel()+" --> "+closestStore.getLabel()+" --> "+closestDepot.getLabel());
     }
     
@@ -77,7 +88,6 @@ public class Controller {
             double temp = operations.calculationDistance(a, b.get(i));
             temp *= 100; //convert in km
             
-            System.out.println(temp +" "+ dist);
             if(temp < dist){
                 address = b.get(i);
                 dist = temp;
