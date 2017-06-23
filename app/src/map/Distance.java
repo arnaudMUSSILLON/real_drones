@@ -3,20 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package app;
+package map;
 
 /**
  *
  * @author arnaudmussillon
  */
-public class App {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
-        Controller controller = new Controller();
+public class Distance {
+    private double km;
+    
+    public Distance(double _km){
+        this.km = _km;
     }
     
+    public double getDistance(){
+        return this.km;
+    }
 }
