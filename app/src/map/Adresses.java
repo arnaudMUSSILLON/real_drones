@@ -5,8 +5,7 @@
  */
 package map;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
@@ -33,8 +32,8 @@ public abstract class Adresses {
      */
     public void loadData(){
         try{
-            FileReader fr = new FileReader(this.path);        
-            BufferedReader br = new BufferedReader(fr);
+            InputStream csv = getClass().getResourceAsStream("/data/"+this.path);            
+            BufferedReader br = new BufferedReader(new InputStreamReader(csv));
 
             String stringRead = br.readLine();
             
@@ -54,9 +53,9 @@ public abstract class Adresses {
             }
 
             br.close();
-            fr.close();
+            csv.close();
         }catch(Exception e){
-            e.getMessage();
+            System.out.println("Error : "+ e.getMessage());
         }
         
     }
