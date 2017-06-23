@@ -42,10 +42,10 @@ public abstract class Adresses {
             {
                 StringTokenizer st = new StringTokenizer(stringRead, ";");
                 String addr = st.nextToken();
-                double x = Double.parseDouble(st.nextToken());  //change type in double
-                double y = Double.parseDouble(st.nextToken());
+                double lat = Double.parseDouble(st.nextToken());  //change type in double
+                double lon = Double.parseDouble(st.nextToken());
           
-                Address address = new Address(addr,x,y);        //create an adress object
+                Address address = new Address(addr,lat,lon);        //create an adress object
                 this.addresses.add(address);
 
                 // read the next line

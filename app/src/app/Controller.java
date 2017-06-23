@@ -86,7 +86,6 @@ public class Controller {
         double dist = 10000;
         for(int i=0; i<b.size(); i++){
             double temp = operations.calculationDistance(a, b.get(i));
-            temp *= 100; //convert in km
             
             if(temp < dist){
                 address = b.get(i);
